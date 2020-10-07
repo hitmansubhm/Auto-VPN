@@ -28,7 +28,8 @@ sleep 2
 count=1
 ping -c 4 google.com
 echo ""
-sudo openvpn $FILE > tmp.txt    
+sudo openvpn $FILE > tmp.txt
+echo "CONNECTED!"
 while [ 1 ]; do
 	LOG=$(tail -n 1 tmp.txt)
 	if [[ $LOG == "error" || $LOG == "unreachable" ]]; then
@@ -37,4 +38,5 @@ while [ 1 ]; do
 		echo "Reconnecting....."
 		sudo openvpn $FILE > tmp.txt    
 	fi
+	echo "CONNECTED!"
 done
